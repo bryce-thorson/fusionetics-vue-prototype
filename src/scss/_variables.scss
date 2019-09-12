@@ -1,0 +1,17 @@
+$primaryBlue: #112146;
+$secondaryBlue: #41BAEC;
+$gray--100: #CCCCCC;
+$gray--300: #ADAEAE;
+$gray--500: #8C9299;
+$gray--700: #444444;
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  overflow-y: auto;
+  overflow-x: hidden;
+}
