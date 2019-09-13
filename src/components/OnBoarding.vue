@@ -1,20 +1,78 @@
 <template>
   <div class="onboarding">
+    <img src="../assets/logo.svg" class="logo" alt="">
     <div class="info-panel">
-      <h3 class="title">{{title}}</h3>
-      <p class="desc">{{desc}}</p>
+      <transition tag="div" class="carousel" enter-active-class="animated slideInRight" leave-active-class="animated slideOutLeft">
+        <div class="slide" v-for="slide in slides" :key="slide.id" >
+          <h3 class="title">{{slide.title}}</h3>
+          <p class="desc">{{slide.desc}}</p>
+        </div>
+      </transition>
+      <div class="navigation">
+        <span @click="goToPrev">Prev</span>
+        <span @click="goToNext">Next</span>
+      </div>
     </div>
   </div>    
 </template>
 
 <script>
+
   export default {
     name: 'OnBoarding',
-    props: {
-      title: String,
-      desc: String,
-      accepted: false
-    }
+    data() {
+      return {
+        slides: [
+          { 
+            title: 'PREVENT INJURIES',
+            desc: 'Find out what puts you at risk, and stop injuries before they happen.',
+            id: 1
+          },
+          { 
+            title: 'DECREASE SORENESS',
+            desc: '79% of users report pain reduction.',
+            id: 2
+          },
+          { 
+            title: 'REACH YOUR GOALS',
+            desc: 'Discover your weak points and learn how to fix them.',
+            id: 3
+          },
+          { 
+            title: 'RECOVERY TRACKING',
+            desc: 'Track your stress, sleep and soreness levels and make a faster recovery.',
+            id: 4
+          },
+          { 
+            title: 'INCREASE MOBILITY',
+            desc: 'Loosen and restore muscles to move better and feel better.',
+            id: 5
+          }
+        ]
+      }
+    },
+    methods: {
+      goToPrev() {
+        const last = this.slides.pop();
+        this.slides = [last].concat(this.slides);
+        // if(this.currentIndex > 0 ){
+        //   this.currentIndex--;
+        // } else {
+        //   this.currentIndex = this.slides.length - 1;
+        // }
+        // console.log(this.currentIndex);
+      },
+      goToNext() {
+        const first = this.slides.shift();
+        this.slides = this.slides.concat(first);
+        // if(this.currentIndex < this.slides.length - 1 ){
+        //   this.currentIndex++;
+        // } else {
+        //   this.currentIndex = 0;
+        // }
+        // console.log(this.currentIndex);
+      }
+    },
   }
 </script>
 
@@ -22,12 +80,54 @@
 <style scoped lang="scss">
 .onboarding {
   padding-top: 2rem;
+  position: absolute;
+  z-index: 10;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .info-panel {
-  margin-top: 30%;
-  width: 300px;
+  padding-top: 30%;
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  & .carousel {
+    overflow: hidden;
+    width: 90%;
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+  }
+  & .slide {
+    display: flex;
+    flex-direction: column;
+    margin: 1em;
+    width: 80%;
+    position: absolute;
+  }
+}
+h3 {
+  padding-bottom: 0.5rem;
 }
 h3, p {
   color: white;
+  margin: 0;
+}
+.logo {
+  max-width: 300px;
+  height: auto;
+  padding-bottom: 2rem;
+}
+.navigation {
+  position: absolute;
+  color: red;
+  bottom: -300px;
+  & span {
+    padding: 0 1rem;
+  }
 }
 </style>

@@ -22,16 +22,19 @@
       <van-tabbar-item icon="friends-o">Tab</van-tabbar-item>
       <van-tabbar-item icon="setting-o">Tab</van-tabbar-item>
     </van-tabbar> -->
-    <transition name="router-anim" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+    <!-- <transition name="router-anim" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
       <router-view/>
-    </transition>
+    </transition> -->
+    <OnBoarding class="onboarding"/>
     <div class="app-bg"></div>
   </div>
 </template>
 
 <script>
+import OnBoarding from "@/components/OnBoarding.vue";
 export default {
   name: 'app',
+  components: {OnBoarding},
   data() {
     return {
       active: 0,
@@ -64,6 +67,8 @@ export default {
     left: 0;
     bottom: 0;
     background: url("./assets/onboarding-bg.png");
+    background-repeat: no-repeat;
+    background-size: cover;
   }
   &::after {
     position: absolute;
