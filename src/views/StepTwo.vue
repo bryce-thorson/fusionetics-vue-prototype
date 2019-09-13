@@ -27,8 +27,6 @@ export default {
 @import "../scss/_variables.scss";
 
 .step-2 {
-  background-color: $primaryBlue;
-  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
