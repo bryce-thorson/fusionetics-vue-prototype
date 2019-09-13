@@ -2,24 +2,35 @@
   <div class="onboarding">
     <img src="../assets/logo.svg" class="logo" alt="">
     <div class="info-panel">
-      <transition tag="div" class="carousel" enter-active-class="animated slideInRight" leave-active-class="animated slideOutLeft">
-        <div class="slide" v-for="slide in slides" :key="slide.id" >
-          <h3 class="title">{{slide.title}}</h3>
-          <p class="desc">{{slide.desc}}</p>
-        </div>
-      </transition>
-      <div class="navigation">
+      <!-- <transition tag="div" class="carousel" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"> -->
+        <carousel
+          paginationActiveColor="#41BAEC"
+          perPage="1"
+          >
+          <slide 
+            v-for="slide in slides" 
+            :key="slide.id">
+            <h3 class="title">{{slide.title}}</h3>
+            <p class="desc">{{slide.desc}}</p>
+          </slide>
+        </carousel>
+      <!-- </transition> -->
+      <!-- <div class="navigation">
         <span @click="goToPrev">Prev</span>
         <span @click="goToNext">Next</span>
-      </div>
+      </div> -->
     </div>
   </div>    
 </template>
 
 <script>
-
+import { Carousel, Slide } from 'vue-carousel';
   export default {
     name: 'OnBoarding',
+    components: {
+      Carousel,
+      Slide
+    },
     data() {
       return {
         slides: [
@@ -48,31 +59,34 @@
             desc: 'Loosen and restore muscles to move better and feel better.',
             id: 5
           }
-        ]
+        ],
+        // currentIndex: 0,
       }
     },
-    methods: {
-      goToPrev() {
-        const last = this.slides.pop();
-        this.slides = [last].concat(this.slides);
-        // if(this.currentIndex > 0 ){
-        //   this.currentIndex--;
-        // } else {
-        //   this.currentIndex = this.slides.length - 1;
-        // }
-        // console.log(this.currentIndex);
-      },
-      goToNext() {
-        const first = this.slides.shift();
-        this.slides = this.slides.concat(first);
-        // if(this.currentIndex < this.slides.length - 1 ){
-        //   this.currentIndex++;
-        // } else {
-        //   this.currentIndex = 0;
-        // }
-        // console.log(this.currentIndex);
-      }
-    },
+    // methods: {
+    //   goToPrev() {
+    //     const last = this.slides.pop();
+    //     this.slides = [last].concat(this.slides);
+
+    //     if(this.currentIndex > 0 ){
+    //       this.currentIndex--;
+    //     } else {
+    //       this.currentIndex = this.slides.length - 1;
+    //     }
+    //     console.log(this.currentIndex);
+    //   },
+    //   goToNext() {
+    //     const first = this.slides.shift();
+    //     this.slides = this.slides.concat(first);
+
+    //     if(this.currentIndex < this.slides.length - 1 ){
+    //       this.currentIndex++;
+    //     } else {
+    //       this.currentIndex = 0;
+    //     }
+    //     console.log(this.currentIndex);
+    //   }
+    // },
   }
 </script>
 
@@ -91,10 +105,10 @@
 .info-panel {
   padding-top: 30%;
   position: relative;
-  width: 100%;
+  width: 80%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  justify-content: flex-start;
   & .carousel {
     overflow: hidden;
     width: 90%;
@@ -105,7 +119,7 @@
   & .slide {
     display: flex;
     flex-direction: column;
-    margin: 1em;
+    margin: 0 12rem;
     width: 80%;
     position: absolute;
   }
@@ -124,7 +138,7 @@ h3, p {
 }
 .navigation {
   position: absolute;
-  color: red;
+  color: white;
   bottom: -300px;
   & span {
     padding: 0 1rem;
