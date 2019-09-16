@@ -8,7 +8,7 @@
       </div>
       <transition tag="div" class="carousel" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
         <div class="slide" v-for="slide in slides" :key="slide.id">
-            <h4 class="title">{{slide.title}}</h4>
+            <h5 class="title">{{slide.title}}</h5>
             <p class="desc">{{slide.desc}}</p>
         </div>
       </transition>
@@ -232,6 +232,8 @@
   background-color: $secondaryBlue;
   border-color: $secondaryBlue;
   margin-bottom: 1rem;
+  border-radius: 0;
+  padding: 0.75rem;
   &.inactive {
     opacity: 0.8;
     
@@ -240,12 +242,15 @@
 .btn-link {
   margin-bottom: 1.5rem;
   color: $secondaryBlue;
+  text-transform: uppercase;
+  font-weight: bold;
 }
 
-h4 {
+h5 {
   padding-bottom: 0.5rem;
+  font-weight: bold;
 }
-h4, p {
+h5, p {
   color: white;
   margin: 0;
 }
