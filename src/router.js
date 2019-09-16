@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import OnBoarding from './components/OnBoarding.vue';
-import Questionnaire from './views/Questionnaire-1.vue';
+import Questionnaire from './views/Questionnaire_One.vue';
 
 Vue.use(Router)
 
@@ -13,8 +13,8 @@ export default new Router({
       component: OnBoarding
     },
     {
-      path: '/Questionnaire-1',
-      name: 'Questionnaire-1',
+      path: '/Questionnaire_One',
+      name: 'Questionnaire_One',
       component: Questionnaire
     }
   ]
