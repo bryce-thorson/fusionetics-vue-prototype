@@ -22,7 +22,9 @@
         <input type="checkbox" id="checkbox" v-model="checked">
         <span class="checkmark"></span>
       </label>
-      <button class="btn btn-primary btn-block" :disabled="!checked">Continue</button>
+      <router-link to="/Questionnaire-1" style="width: 100%;">
+        <button class="btn btn-primary btn-block" :disabled="!checked">Continue</button>
+      </router-link>
       <a href="#" class="btn-link">Log In</a>
     </div>
   </div>    
@@ -234,10 +236,6 @@
   margin-bottom: 1rem;
   border-radius: 0;
   padding: 0.75rem;
-  &.inactive {
-    opacity: 0.8;
-    
-  }
 }
 .btn-link {
   margin-bottom: 1.5rem;
