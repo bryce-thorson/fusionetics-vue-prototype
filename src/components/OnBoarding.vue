@@ -2,35 +2,26 @@
   <div class="onboarding">
     <img src="../assets/logo.svg" class="logo" alt="">
     <div class="info-panel">
-      <!-- <transition tag="div" class="carousel" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut"> -->
-        <carousel
-          paginationActiveColor="#41BAEC"
-          perPage="1"
-          >
-          <slide 
-            v-for="slide in slides" 
-            :key="slide.id">
+      <transition tag="div" class="carousel" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+        <div class="slide" v-for="slide in slides" :key="slide.id">
             <h3 class="title">{{slide.title}}</h3>
             <p class="desc">{{slide.desc}}</p>
-          </slide>
-        </carousel>
-      <!-- </transition> -->
-      <!-- <div class="navigation">
+        </div>
+      </transition>
+        <ul class="indicators">
+          <li v-for="(_, index) in slides" :key="index" class="indicator" v-bind:class="{active: currentIndex === index}"></li>
+        </ul>
+      <div class="navigation">
         <span @click="goToPrev">Prev</span>
         <span @click="goToNext">Next</span>
-      </div> -->
+      </div>
     </div>
   </div>    
 </template>
 
 <script>
-import { Carousel, Slide } from 'vue-carousel';
   export default {
     name: 'OnBoarding',
-    components: {
-      Carousel,
-      Slide
-    },
     data() {
       return {
         slides: [
@@ -60,33 +51,33 @@ import { Carousel, Slide } from 'vue-carousel';
             id: 5
           }
         ],
-        // currentIndex: 0,
+        currentIndex: 0,
       }
     },
-    // methods: {
-    //   goToPrev() {
-    //     const last = this.slides.pop();
-    //     this.slides = [last].concat(this.slides);
+    methods: {
+      goToPrev() {
+        const last = this.slides.pop();
+        this.slides = [last].concat(this.slides);
 
-    //     if(this.currentIndex > 0 ){
-    //       this.currentIndex--;
-    //     } else {
-    //       this.currentIndex = this.slides.length - 1;
-    //     }
-    //     console.log(this.currentIndex);
-    //   },
-    //   goToNext() {
-    //     const first = this.slides.shift();
-    //     this.slides = this.slides.concat(first);
+        if(this.currentIndex > 0 ){
+          this.currentIndex--;
+        } else {
+          this.currentIndex = this.slides.length - 1;
+        }
+        console.log(this.currentIndex);
+      },
+      goToNext() {
+        const first = this.slides.shift();
+        this.slides = this.slides.concat(first);
 
-    //     if(this.currentIndex < this.slides.length - 1 ){
-    //       this.currentIndex++;
-    //     } else {
-    //       this.currentIndex = 0;
-    //     }
-    //     console.log(this.currentIndex);
-    //   }
-    // },
+        if(this.currentIndex < this.slides.length - 1 ){
+          this.currentIndex++;
+        } else {
+          this.currentIndex = 0;
+        }
+        console.log(this.currentIndex);
+      }
+    },
   }
 </script>
 
@@ -119,11 +110,30 @@ import { Carousel, Slide } from 'vue-carousel';
   & .slide {
     display: flex;
     flex-direction: column;
-    margin: 0 12rem;
-    width: 80%;
+    width: 100%;
     position: absolute;
   }
+  & .indicators {
+    bottom: -200px;
+    position: absolute;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    & .indicator {
+      width: 10px;
+      height: 10px;
+      margin: 0 0.5rem;
+      border-radius: 50%;
+      background-color: white;
+      border: 1px solid white;
+      opacity: 0.3;
+      &.active {
+        opacity: 1;
+      }
+    }
+  }
 }
+
 h3 {
   padding-bottom: 0.5rem;
 }
