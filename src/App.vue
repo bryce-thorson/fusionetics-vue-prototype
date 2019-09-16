@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <!-- <van-nav-bar title="Title" left-text="Back" fixed left-arrow>
-      <van-icon name="search" slot="right" />
-    </van-nav-bar> -->
-
     <!-- <van-tabbar v-model="active">  
       <van-tabbar-item 
         v-on:click="show = !show"

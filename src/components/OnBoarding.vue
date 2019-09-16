@@ -8,7 +8,7 @@
       </div>
       <transition tag="div" class="carousel" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
         <div class="slide" v-for="slide in slides" :key="slide.id">
-            <h3 class="title">{{slide.title}}</h3>
+            <h4 class="title">{{slide.title}}</h4>
             <p class="desc">{{slide.desc}}</p>
         </div>
       </transition>
@@ -18,10 +18,12 @@
     </div>
     <div class="checkbox-panel">
       <label for="checkbox" class="checkbox-container">
-        I accept the terms &amp; conditions
+        I accept the <a href="#" class="btn-link">terms &amp; conditions</a>
         <input type="checkbox" id="checkbox" v-model="checked">
         <span class="checkmark"></span>
       </label>
+      <button class="btn btn-primary btn-block" :disabled="!checked">Continue</button>
+      <a href="#" class="btn-link">Log In</a>
     </div>
   </div>    
 </template>
@@ -105,7 +107,7 @@
 .info-panel {
   position: relative;
   width: 80%;
-  height: 200px;
+  height: 120px;
   & .carousel {
     overflow: hidden;
     width: 90%;
@@ -122,7 +124,7 @@
   & .navigation {
     position: absolute;
     color: white;
-    height: 200px;
+    height: 120px;
     left: -20px;
     right: -20px;
     & span {
@@ -163,12 +165,19 @@
 }
 .checkbox-panel {
   color: white;
-  margin-bottom: 8rem;
   display: flex;
-  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 320px;
   & .checkbox-container {
       position: relative;
+      display: flex;
+      justify-content: center;
+      text-transform: uppercase;
+      font-size: 0.75rem;
       padding-left: 2.25rem;
+      padding-bottom: 1rem;
       cursor: pointer;
       -webkit-user-select: none;
       -moz-user-select: none;
@@ -183,8 +192,8 @@
     }
     & .checkmark {
       position: absolute;
-      top: 2px;
-      left: 0;
+      top: 0px;
+      left: 0.5rem;
       height: 1rem;
       width: 1rem;
       background-color: $gray--100;
@@ -212,13 +221,31 @@
       -ms-transform: rotate(45deg);
       transform: rotate(45deg);
     }
+    & .btn-link {
+      padding-left: 0.25rem;
+      margin-bottom: 0;
+    }
   }
 }
 
-h3 {
+.btn-primary {
+  background-color: $secondaryBlue;
+  border-color: $secondaryBlue;
+  margin-bottom: 1rem;
+  &.inactive {
+    opacity: 0.8;
+    
+  }
+}
+.btn-link {
+  margin-bottom: 1.5rem;
+  color: $secondaryBlue;
+}
+
+h4 {
   padding-bottom: 0.5rem;
 }
-h3, p {
+h4, p {
   color: white;
   margin: 0;
 }
