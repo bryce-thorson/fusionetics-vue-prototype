@@ -2,6 +2,10 @@
   <div class="onboarding">
     <img src="../assets/logo.svg" class="logo" alt="">
     <div class="info-panel">
+      <div class="navigation">
+        <span @click="goToPrev">Prev</span>
+        <span @click="goToNext">Next</span>
+      </div>
       <transition tag="div" class="carousel" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
         <div class="slide" v-for="slide in slides" :key="slide.id">
             <h3 class="title">{{slide.title}}</h3>
@@ -11,10 +15,6 @@
         <ul class="indicators">
           <li v-for="(_, index) in slides" :key="index" class="indicator" v-bind:class="{active: currentIndex === index}"></li>
         </ul>
-      <div class="navigation">
-        <span @click="goToPrev">Prev</span>
-        <span @click="goToNext">Next</span>
-      </div>
     </div>
   </div>    
 </template>
@@ -114,7 +114,7 @@
     position: absolute;
   }
   & .indicators {
-    bottom: -200px;
+    bottom: -120px;
     position: absolute;
     display: flex;
     flex-direction: row;
@@ -149,9 +149,22 @@ h3, p {
 .navigation {
   position: absolute;
   color: white;
-  bottom: -300px;
+  height: 200px;
+  bottom: -164px;
+  left: -20px;
+  right: -20px;
   & span {
-    padding: 0 1rem;
+    opacity: 0;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 100px;
+  }
+  & span:first-of-type {
+    left: -1rem;
+  }
+  & span:last-of-type {
+    right: -1rem;
   }
 }
 </style>
