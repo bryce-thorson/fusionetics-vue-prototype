@@ -1,36 +1,13 @@
 <template>
   <div id="app">
-    <!-- <van-tabbar v-model="active">  
-      <van-tabbar-item 
-        v-on:click="show = !show"
-        replace
-        to="/"
-        icon="home-o"
-        >Home
-      </van-tabbar-item>
-      <van-tabbar-item 
-        v-on:click="show = !show"
-        replace
-        to="/about"
-        icon="search"
-        >About
-      </van-tabbar-item>
-      <van-tabbar-item icon="friends-o">Tab</van-tabbar-item>
-      <van-tabbar-item icon="setting-o">Tab</van-tabbar-item>
-    </van-tabbar> -->
-    <!-- <transition name="router-anim" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
-      <router-view/>
-    </transition> -->
-    <OnBoarding class="onboarding"/>
+    <router-view></router-view>
     <div class="app-bg"></div>
   </div>
 </template>
 
 <script>
-import OnBoarding from "@/components/OnBoarding.vue";
 export default {
   name: 'app',
-  components: {OnBoarding},
   data() {
     return {
       active: 0,

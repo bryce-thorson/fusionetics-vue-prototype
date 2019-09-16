@@ -22,7 +22,7 @@
         <input type="checkbox" id="checkbox" v-model="checked">
         <span class="checkmark"></span>
       </label>
-      <router-link to="/Questionnaire-1" style="width: 100%;">
+      <router-link to="Questionnaire-1" style="width: 100%;">
         <button class="btn btn-primary btn-block" :disabled="!checked">Continue</button>
       </router-link>
       <a href="#" class="btn-link">Log In</a>
