@@ -64,7 +64,6 @@
         } else {
           this.currentIndex = this.slides.length - 1;
         }
-        console.log(this.currentIndex);
       },
       goToNext() {
         const first = this.slides.shift();
@@ -75,7 +74,6 @@
         } else {
           this.currentIndex = 0;
         }
-        console.log(this.currentIndex);
       }
     },
   }
