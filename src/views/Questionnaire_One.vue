@@ -113,5 +113,9 @@ export default {
       font-weight: 100;
       margin-bottom: 1rem;
     }
+    & h5 {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
   }
 </style>

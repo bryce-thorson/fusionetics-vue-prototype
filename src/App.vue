@@ -1,13 +1,14 @@
 <template>
   <div id="app">
-    <transition name="router-anim" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+    <transition 
+      name="router-anim" 
+      enter-active-class="animated fadeIn" 
+      leave-active-class="animated fadeOut"
+      >
       <router-view></router-view>
     </transition>
   </div>
 </template>
-
-
-
 
 
 <script>

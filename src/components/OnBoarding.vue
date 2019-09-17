@@ -238,13 +238,7 @@ export default {
     }
   }
 }
-
-h5 {
-  padding-bottom: 0.5rem;
-  font-weight: bold;
-}
-h5,
-p {
+h5, p {
   color: white;
   margin: 0;
 }

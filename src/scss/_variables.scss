@@ -16,6 +16,11 @@ body {
   overflow-x: hidden;
 }
 
+h5 {
+  padding-bottom: 0.5rem;
+  font-weight: bold;
+}
+
 .btn-primary {
   background-color: $secondaryBlue;
   border-color: $secondaryBlue;
