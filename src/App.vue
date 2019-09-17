@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <router-view></router-view>
-    <div class="app-bg"></div>
   </div>
 </template>
 
@@ -32,19 +31,16 @@ export default {
   width: 100%;
 }
 .app-bg {
-  position: relative;
+  position: absolute;
   height: 100%;
   width: 100%;
   &::before {
-    content: '';
+    content: "";
     position: absolute;
     top: 0;
     right: 0;
     left: 0;
     bottom: 0;
-    background: url("./assets/onboarding-bg.png");
-    background-repeat: no-repeat;
-    background-size: cover;
   }
   &::after {
     position: absolute;
@@ -53,15 +49,9 @@ export default {
     right: 0;
     left: 0;
     bottom: 0;
-    opacity: 0.90;
-    content: ''; 
+    opacity: 0.9;
+    content: "";
   }
-}
-.page {
-  position: absolute;
-  width: 100%;
-  padding: 0 1rem;
-  z-index: 10;
 }
 
 </style>

@@ -1,103 +1,112 @@
 <template>
-  <div class="onboarding">
-    <img src="../assets/logo.svg" class="logo" alt="">
-    <div class="info-panel">
-      <div class="navigation">
-        <span @click="goToPrev">Prev</span>
-        <span @click="goToNext">Next</span>
-      </div>
-      <transition tag="div" class="carousel" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
-        <div class="slide" v-for="slide in slides" :key="slide.id">
-            <h5 class="title">{{slide.title}}</h5>
-            <p class="desc">{{slide.desc}}</p>
+  <div>
+    <div class="onboarding">
+      <img src="../assets/logo.svg" class="logo" alt="">
+      <div class="info-panel">
+        <div class="navigation">
+          <span @click="goToPrev">Prev</span>
+          <span @click="goToNext">Next</span>
         </div>
-      </transition>
-        <ul class="indicators">
-          <li v-for="(_, index) in slides" :key="index" class="indicator" v-bind:class="{active: currentIndex === index}"></li>
-        </ul>
-    </div>
-    <div class="checkbox-panel">
-      <label for="checkbox" class="checkbox-container">
-        I accept the <a href="#" class="btn-link">terms &amp; conditions</a>
-        <input type="checkbox" id="checkbox" v-model="checked">
-        <span class="checkmark"></span>
-      </label>
-      <router-link to="Questionnaire-1" style="width: 100%;">
-        <button class="btn btn-primary btn-block" :disabled="!checked">Continue</button>
-      </router-link>
-      <a href="#" class="btn-link">Log In</a>
-    </div>
-  </div>    
+        <transition tag="div" class="carousel" enter-active-class="animated fadeIn" leave-active-class="animated fadeOut">
+          <div class="slide" v-for="slide in slides" :key="slide.id">
+              <h5 class="title">{{slide.title}}</h5>
+              <p class="desc">{{slide.desc}}</p>
+          </div>
+        </transition>
+          <ul class="indicators">
+            <li v-for="(_, index) in slides" :key="index" class="indicator" v-bind:class="{active: currentIndex === index}"></li>
+          </ul>
+      </div>
+      <div class="checkbox-panel">
+        <label for="checkbox" class="checkbox-container">
+          I accept the <a href="#" class="btn-link">terms &amp; conditions</a>
+          <input type="checkbox" id="checkbox" v-model="checked">
+          <span class="checkmark"></span>
+        </label>
+        <router-link to="Questionnaire_One" style="width: 100%;">
+          <button class="btn btn-primary btn-block" :disabled="!checked">Continue</button>
+        </router-link>
+        <a href="#" class="btn-link">Log In</a>
+      </div>
+    </div>  
+    <div class="app-bg onboarding-bg"></div>  
+  </div>
 </template>
 
 <script>
-  export default {
-    name: 'OnBoarding',
-    data() {
-      return {
-        slides: [
-          { 
-            title: 'PREVENT INJURIES',
-            desc: 'Find out what puts you at risk, and stop injuries before they happen.',
-            id: 1
-          },
-          { 
-            title: 'DECREASE SORENESS',
-            desc: '79% of users report pain reduction.',
-            id: 2
-          },
-          { 
-            title: 'REACH YOUR GOALS',
-            desc: 'Discover your weak points and learn how to fix them.',
-            id: 3
-          },
-          { 
-            title: 'RECOVERY TRACKING',
-            desc: 'Track your stress, sleep and soreness levels and make a faster recovery.',
-            id: 4
-          },
-          { 
-            title: 'INCREASE MOBILITY',
-            desc: 'Loosen and restore muscles to move better and feel better.',
-            id: 5
-          }
-        ],
-        currentIndex: 0,
-        checked: false,
+export default {
+  name: "OnBoarding",
+  data() {
+    return {
+      slides: [
+        {
+          title: "PREVENT INJURIES",
+          desc:
+            "Find out what puts you at risk, and stop injuries before they happen.",
+          id: 1
+        },
+        {
+          title: "DECREASE SORENESS",
+          desc: "79% of users report pain reduction.",
+          id: 2
+        },
+        {
+          title: "REACH YOUR GOALS",
+          desc: "Discover your weak points and learn how to fix them.",
+          id: 3
+        },
+        {
+          title: "RECOVERY TRACKING",
+          desc:
+            "Track your stress, sleep and soreness levels and make a faster recovery.",
+          id: 4
+        },
+        {
+          title: "INCREASE MOBILITY",
+          desc: "Loosen and restore muscles to move better and feel better.",
+          id: 5
+        }
+      ],
+      currentIndex: 0,
+      checked: false
+    };
+  },
+  methods: {
+    goToPrev() {
+      const last = this.slides.pop();
+      this.slides = [last].concat(this.slides);
+
+      if (this.currentIndex > 0) {
+        this.currentIndex--;
+      } else {
+        this.currentIndex = this.slides.length - 1;
       }
     },
-    methods: {
-      goToPrev() {
-        const last = this.slides.pop();
-        this.slides = [last].concat(this.slides);
+    goToNext() {
+      const first = this.slides.shift();
+      this.slides = this.slides.concat(first);
 
-        if(this.currentIndex > 0 ){
-          this.currentIndex--;
-        } else {
-          this.currentIndex = this.slides.length - 1;
-        }
-      },
-      goToNext() {
-        const first = this.slides.shift();
-        this.slides = this.slides.concat(first);
-
-        if(this.currentIndex < this.slides.length - 1 ){
-          this.currentIndex++;
-        } else {
-          this.currentIndex = 0;
-        }
+      if (this.currentIndex < this.slides.length - 1) {
+        this.currentIndex++;
+      } else {
+        this.currentIndex = 0;
       }
-    },
+    }
   }
+};
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-@import '../scss/_variables.scss';
-
+@import "../scss/_variables.scss";
+.onboarding-bg {
+  background: url("../assets/onboarding-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 .onboarding {
-  padding-top: 2rem;
   position: absolute;
+  padding-top: 2rem;
   z-index: 10;
   height: 100%;
   width: 100%;
@@ -173,24 +182,24 @@
   flex-direction: column;
   width: 320px;
   & .checkbox-container {
-      position: relative;
-      display: flex;
-      justify-content: center;
-      text-transform: uppercase;
-      font-size: 0.75rem;
-      padding-left: 2.25rem;
-      padding-bottom: 1rem;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    text-transform: uppercase;
+    font-size: 0.75rem;
+    padding-left: 2.25rem;
+    padding-bottom: 1rem;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    & input {
+      opacity: 0;
       cursor: pointer;
-      -webkit-user-select: none;
-      -moz-user-select: none;
-      -ms-user-select: none;
-      user-select: none;
-      & input {
-        opacity: 0;
-        cursor: pointer;
-        height: 0;
-        width: 0;
-        position: absolute;
+      height: 0;
+      width: 0;
+      position: absolute;
     }
     & .checkmark {
       position: absolute;
@@ -210,7 +219,7 @@
       background-color: white;
     }
     & input:checked ~ .checkmark:after {
-        display: block;
+      display: block;
     }
     & .checkmark::after {
       left: 5px;
@@ -248,7 +257,8 @@ h5 {
   padding-bottom: 0.5rem;
   font-weight: bold;
 }
-h5, p {
+h5,
+p {
   color: white;
   margin: 0;
 }
