@@ -239,20 +239,6 @@ export default {
   }
 }
 
-.btn-primary {
-  background-color: $secondaryBlue;
-  border-color: $secondaryBlue;
-  margin-bottom: 1rem;
-  border-radius: 0;
-  padding: 0.75rem;
-}
-.btn-link {
-  margin-bottom: 1.5rem;
-  color: $secondaryBlue;
-  text-transform: uppercase;
-  font-weight: bold;
-}
-
 h5 {
   padding-bottom: 0.5rem;
   font-weight: bold;
