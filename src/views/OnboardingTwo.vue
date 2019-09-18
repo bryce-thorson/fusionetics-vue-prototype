@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="questionnaire">
+    <div class="onboardingTwo">
       <div class="qa-area">
         <h5>Are there any areas you want to focus on?</h5>
         <button 
@@ -15,19 +15,19 @@
       </div>
       <div class="continue-area">
         <router-link to="/" class="btn-link program">How does this affect my program?</router-link>
-        <router-link to="/" style="width: 100%;">
+        <router-link to="/Onboarding-3" style="width: 100%;">
           <button class="btn btn-primary btn-block" :disabled="!isActive">Continue</button>
         </router-link>
       </div>
     </div>
-    <div class="app-bg questionnaire-bg"></div>
+    <div class="app-bg onboardingTwo-bg"></div>
   </div>
 </template>
 
 
 <script>
 export default {
-  name: 'Questionnaire',
+  name: 'OnboardingTwo',
   data() {
     return {
       answers: [
@@ -49,12 +49,12 @@ export default {
 <style lang="scss" scoped>
 @import '../scss/_variables.scss';
 
-  .questionnaire-bg {
-    background: url("../assets/questionnaire-bg.png");
+  .onboardingTwo-bg {
+    background: url("../assets/onboardingTwo-bg.png");
     background-repeat: no-repeat;
     background-size: cover;
   }
-  .questionnaire {
+  .onboardingTwo {
     padding:  1.5rem;
     position: absolute;
     display: flex;

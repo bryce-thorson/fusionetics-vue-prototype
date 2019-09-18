@@ -1,7 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import OnBoarding from './components/OnBoarding.vue';
-import Questionnaire from './views/Questionnaire_One.vue';
+import Onboarding from './components/Onboarding.vue';
+import OnboardingTwo from './views/OnboardingTwo.vue';
+import OnboardingThree from './views/OnboardingThree.vue';
 
 Vue.use(Router)
 
@@ -9,13 +10,18 @@ export default new Router({
   routes: [
     {
       path: '/',
-      name: 'OnBoarding',
-      component: OnBoarding
+      name: 'Onboarding',
+      component: Onboarding
     },
     {
-      path: '/Questionnaire_One',
-      name: 'Questionnaire_One',
-      component: Questionnaire
-    }
+      path: '/Onboarding-2',
+      name: 'OnboardingTwo',
+      component: OnboardingTwo
+    },
+    {
+      path: '/Onboarding-3',
+      name: 'OnboardingThree',
+      component: OnboardingThree
+    },
   ]
 })

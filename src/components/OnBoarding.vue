@@ -23,7 +23,7 @@
           <input type="checkbox" id="checkbox" v-model="checked">
           <span class="checkmark"></span>
         </label>
-        <router-link to="Questionnaire_One" style="width: 100%;">
+        <router-link to="/Onboarding-2" style="width: 100%;">
           <button class="btn btn-primary btn-block" :disabled="!checked">Continue</button>
         </router-link>
         <a href="#" class="btn-link">Log In</a>
@@ -35,7 +35,7 @@
 
 <script>
 export default {
-  name: "OnBoarding",
+  name: "Onboarding",
   data() {
     return {
       slides: [
