@@ -3,10 +3,10 @@
     <div class="tab-container">
       <b-tabs pills fill>
         <b-tab title="Tab 1" active>
-            <b-card-img bottom src="https://picsum.photos/600/200/?image=21"></b-card-img>
+            <b-card-img bottom src="https://picsum.photos/600/200/?image=22"></b-card-img>
           </b-tab>
         <b-tab title="Tab 2">
-          <b-card-img bottom src="https://picsum.photos/600/200/?image=24"></b-card-img>
+          <b-card-img bottom src="https://picsum.photos/600/200/?image=23"></b-card-img>
         </b-tab>
       </b-tabs>
     </div>
