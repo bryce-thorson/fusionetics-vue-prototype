@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Onboarding from './components/Onboarding.vue';
+import Onboarding from './views/Onboarding.vue';
 import OnboardingTwo from './views/OnboardingTwo.vue';
 import OnboardingThree from './views/OnboardingThree.vue';
 
